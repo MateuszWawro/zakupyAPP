@@ -2,18 +2,12 @@
 {% block content %}
 <div cass = "row">
     <form class = "", method = "post">
-
-        {{formf.csrf.token}}
-        <div class = "form-group"></div>
-        <div class = "form-group"></div>
-        <div class = "form-group"></div>
-        <div class = "form-group"></div>
+        {{form.csrf.token}}
+        <div class = "form-group">{{form.product(placeholder="produkt", class="form-control")}}</div>
+        <div class = "form-group">{{form.producer(placeholder="producent", class="form-control")}}</div>
+        <div class = "form-group">{{form.price(placeholder="cena", class="form-control")}}</div>
+        <div class = "form-group">{{form.submit(class="btn btn-success")}}</div>
     </form>
-
-
-
-
-
 </div>
 
 
