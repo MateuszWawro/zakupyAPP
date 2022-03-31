@@ -10,9 +10,14 @@ def home_page():
     return render_template ("base.html", title="")
 
 
-# @app.route('/addproduct', methods=["GET"])
-# def view_add_product():
-#     return render_template("productadd.html", title="")
+@app.route('/productlist')
+def view_product_list():
+    return render_template("productlist.html", title="")
+
+
+@app.route('/database', methods=["GET"])
+def view_data_base():
+    return render_template("database.html", title="")
 
 
 @app.route('/addproduct', methods=['GET', 'POST'])
@@ -34,6 +39,6 @@ def view_add_product():
     else:
         flash(form.errors)
         print(form.errors)
-    return render_template("productadd.html", title="", form=form)
+    return render_template("addingform.html", title="", form=form)
 
 

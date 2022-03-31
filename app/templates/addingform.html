@@ -9,6 +9,7 @@
 
 </head>
 <body>
+
 <div class = "row">
     <form class = "col-lg-6 offset-lg-3", method = "post">
         {{form.csrf_token}}
@@ -17,6 +18,12 @@
         <div class = "form-group">{{form.price(placeholder="cena", class="form-control")}}</div>
         <div class = "form-group">{{form.submit(class="btn btn-success")}}</div>
     </form>
+</div>
+<div class = "row">
+    <div class = "col-sm">
+        <a href="{{url_for('home_page')}}" class = "btn btn-primary btn-lg active" role="button" aria-pressed="true">Strona Główna</a>
+        <a href="{{url_for('view_data_base')}}" class = "btn btn-primary btn-lg active" role="button" aria-pressed="true">Baza Danych</a>
+    </div>
 </div>
 </body>
 </html>
