@@ -4,7 +4,7 @@ from wtforms import StringField, SubmitField, IntegerField
 
 class AddProduct(FlaskForm):
     product = StringField('Produkt')
-    prodcuer = StringField('Producent')
+    producer = StringField('Producent')
     price = IntegerField('Cena')
     submit = SubmitField("Dodaj")
 

@@ -5,7 +5,7 @@ from .models import DbModel
 from app import app, db
 
 
-@app.route('/homepage')
+@app.route('/')
 def home_page():
     return render_template ("base.html", title="")
 
@@ -14,6 +14,7 @@ def home_page():
 def view_add_product():
     form = AddProduct()
     product_list = DbModel.query.all()
+    print(product_list)
     if form.validate_on_submit():
         try:
             q = DbModel(product=form.product.data, producer=form.producer.data, price=form.price.data)

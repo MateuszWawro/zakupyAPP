@@ -11,3 +11,4 @@ app.secret_key = 'the random string'
 
 db = SQLAlchemy(app)
 
+from . import views, models
