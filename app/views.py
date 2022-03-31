@@ -10,14 +10,19 @@ def home_page():
     return render_template ("base.html", title="")
 
 
-@app.route('/addproduct')
+# @app.route('/addproduct', methods=["GET"])
+# def view_add_product():
+#     return render_template("productadd.html", title="")
+
+
+@app.route('/addproduct', methods=['GET', 'POST'])
 def view_add_product():
     form = AddProduct()
     product_list = DbModel.query.all()
     print(product_list)
     if form.validate_on_submit():
         try:
-            q = DbModel(product=form.product.data, producer=form.producer.data, price=form.price.data)
+            q = DbModel(product=form.product.data, producer=form.producer.data, price=form.price.data, ilosc=form.ilosc.data)
             db.session.add(q)
         except DBAPIError as e:
             db.session.rollback()
@@ -29,6 +34,6 @@ def view_add_product():
     else:
         flash(form.errors)
         print(form.errors)
-    return render_template("productadd.html", title="")
+    return render_template("productadd.html", title="", form=form)
 
 
