@@ -7,4 +7,5 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Users\\mwawro\\PycharmProjects\\zakupyAPP\\zakupyAPP_database.db'
 
 
-db = SQLAlchemy
+db = SQLAlchemy(app)
+
