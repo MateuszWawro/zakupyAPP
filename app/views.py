@@ -34,11 +34,26 @@ def view_add_product():
             flash(e.detail)
         else:
             db.session.commit()
-            product_list = DbModel.query.all()
+            DbModel.query.all()
             return redirect(url_for('view_add_product'))
     else:
         flash(form.errors)
         print(form.errors)
-    return render_template("addingform.html", title="", form=form)
+    return render_template("addingform.html", title="", form=form, product_list=product_list if product_list else list())
 
 
+@app.route("/update/<int:id>", methods=["POST", "GET"])
+def view_update(id):
+    prod_list = DbModel.query.filter_by(id=id).first()
+    print(prod_list)
+    prod_list.complete = not prod_list.complete
+    db.session.commit()
+    return redirect(url_for("view_product_list"))
+
+
+@app.route("/delete/<int:id>", methods=["POST", "GET"])
+def view_delete(id):
+    prod_list = DbModel.query.filter_by(id=id).first()
+    db.session.delete(prod_list)
+    db.session.commit()
+    return redirect(url_for("view_product_list"))
