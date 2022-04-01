@@ -3,7 +3,7 @@ from sqlalchemy.exc import DBAPIError
 from .forms import AddProduct
 from .models import DbModel
 from app import app, db
-
+from sqlalchemy import text
 
 @app.route('/')
 def home_page():
@@ -12,12 +12,22 @@ def home_page():
 
 @app.route('/productlist')
 def view_product_list():
-    return render_template("productlist.html", title="")
+    product_list = DbModel.query.all()
+    return render_template("productlist.html", title="", product_list=product_list)
 
 
 @app.route('/database', methods=["GET"])
 def view_data_base():
     return render_template("database.html", title="")
+
+
+# @app.route("/add", methods=["POST"])
+# def view_add():
+#     title = request.form.get("title")
+#     new_todo = DbModel(title='title')
+#     db.session.add(new_todo)
+#     db.session.commit()
+#     return redirect(url_for("view_product_list"))
 
 
 @app.route('/addproduct', methods=['GET', 'POST'])
@@ -42,18 +52,18 @@ def view_add_product():
     return render_template("addingform.html", title="", form=form, product_list=product_list if product_list else list())
 
 
-@app.route("/update/<int:id>", methods=["POST", "GET"])
-def view_update(id):
-    prod_list = DbModel.query.filter_by(id=id).first()
-    print(prod_list)
-    prod_list.complete = not prod_list.complete
-    db.session.commit()
-    return redirect(url_for("view_product_list"))
+# @app.route("/update/<int:id>", methods=["POST", "GET"])
+# def view_update(id):
+#     prod_list = DbModel.query.filter_by(id=id).first()
+#     print(prod_list)
+#     prod_list.complete = not prod_list.complete
+#     db.session.commit()
+#     return redirect(url_for("view_product_list"))
 
 
-@app.route("/delete/<int:id>", methods=["POST", "GET"])
-def view_delete(id):
-    prod_list = DbModel.query.filter_by(id=id).first()
-    db.session.delete(prod_list)
-    db.session.commit()
-    return redirect(url_for("view_product_list"))
+# @app.route("/delete/<int:id>", methods=["POST", "GET"])
+# def view_delete(id):
+#     prod_list = DbModel.query.filter_by(id=id).first()
+#     db.session.delete(prod_list)
+#     db.session.commit()
+#     return redirect(url_for("view_product_list"))
