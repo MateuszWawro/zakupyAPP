@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField, FloatField
+from wtforms import StringField, SubmitField, IntegerField, FloatField, EmailField, PasswordField, validators
 
 
 class AddProduct(FlaskForm):
@@ -10,6 +10,11 @@ class AddProduct(FlaskForm):
     ilosc = FloatField('Ilość')
 
 
+class RegistratonForm(FlaskForm):
+    name = StringField('Imię' [validators.Length(min=4, max=20)])
+    surname = StringField('Nazwisko' [validators.Length(min=4, max=20)])
+    email = EmailField('Adres Email'[validators.Email()])
+    login = StringField ('Login', [validators.Length(min=4, max=20)])
+    password = PasswordField('Hasło', [validators.InputRequired()])
 
-## class AddQuantity(FlaskForm):
 
