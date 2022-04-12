@@ -10,7 +10,8 @@
 </head>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <center><h1>Sklep Staś</h1></center>
+        <center><h1>Sklep Staś </br>
+            Witaj  {{current_user.name}}</h1></center>
     </div>
 </div>
 <div class="container">
@@ -23,7 +24,10 @@
             <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Stwórz Listę Zakupów</a>
         </div>
         <div class="col-sm">
-            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Logowanie</a>
+            <a href="{{url_for('view_login')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Logowanie</a>
+        </div>
+        <div class="col-sm">
+            <a href="{{url_for('view_registraton')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Rejestracja</a>
         </div>
     </div>
 </div>

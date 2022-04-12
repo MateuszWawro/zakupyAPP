@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, IntegerField, FloatField, EmailField, PasswordField, validators
+from wtforms.validators import DataRequired
 
 
 class AddProduct(FlaskForm):
@@ -11,10 +12,17 @@ class AddProduct(FlaskForm):
 
 
 class RegistratonForm(FlaskForm):
-    name = StringField('Imię' [validators.Length(min=4, max=20)])
-    surname = StringField('Nazwisko' [validators.Length(min=4, max=20)])
-    email = EmailField('Adres Email'[validators.Email()])
+    name = StringField('Imię' ,[validators.Length(min=4, max=20)])
+    surname = StringField('Nazwisko', [validators.Length(min=4, max=20)])
+    email = EmailField('Adres Email', [validators.Email()])
     login = StringField ('Login', [validators.Length(min=4, max=20)])
     password = PasswordField('Hasło', [validators.InputRequired()])
+    submit = SubmitField('Dodaj')
+
+
+class LoginForm(FlaskForm):
+    login = StringField('Login' ,validators=[DataRequired()])
+    password = PasswordField('Hasło',validators=[DataRequired()])
+    submit = SubmitField('Zaloguj')
 
 
