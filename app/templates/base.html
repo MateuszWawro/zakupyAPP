@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sklep Staś</title>
+    <title>Sklep</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -10,9 +10,15 @@
 </head>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
-        <center><h1>Sklep Staś </br>
-            Witaj  {{current_user.name}}</h1></center>
+        <center><h1>Sklep </br>  {{current_user.name}}</h1></center>
+        <div class ="row">
+            <div class="col-sm">
+            <a href="{{url_for('view_logout')}}" class="btn btn-primary btn-lg active" role="button"
+               aria-pressed="true">wyloguj</a>
+            </div>
+        </div>
     </div>
+
 </div>
 <div class="container">
     <div class="row">

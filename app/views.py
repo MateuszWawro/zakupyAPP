@@ -1,5 +1,5 @@
 from flask import render_template, flash, url_for, request, redirect
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from sqlalchemy.exc import DBAPIError
 from .forms import AddProduct, RegistratonForm, LoginForm
 from .models import DbModel, UserModel
@@ -91,3 +91,10 @@ def view_login():
 @lm.user_loader
 def load_user(user_id):
     return UserModel.query.get(user_id)
+
+
+##wylogowywanie użytkownika
+@app.route('/logout')
+def view_logout():
+    logout_user()
+    return redirect(url_for('home_page'))
