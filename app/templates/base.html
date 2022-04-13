@@ -11,10 +11,16 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <center><h1>Sklep </br>  {{current_user.name}}</h1></center>
-        <div class ="row">
+        <div class="row">
+
+            {% if current_user.is_authenticated %}
+
             <div class="col-sm">
-            <a href="{{url_for('view_logout')}}" class="btn btn-primary btn-lg active" role="button"
-               aria-pressed="true">wyloguj</a>
+                <a href="{{url_for('view_logout')}}" class="btn btn-primary btn-lg active" role="button"
+                   aria-pressed="true"> wyloguj</a>
+
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -22,18 +28,25 @@
 </div>
 <div class="container">
     <div class="row">
+
+        {% if current_user.role %}
+
         <div class="col-sm">
             <a href="{{url_for('view_data_base')}}" class="btn btn-primary btn-lg active" role="button"
                aria-pressed="true">Baza Danych</a>
+            {% endif %}
         </div>
+        {% if current_user.is_authenticated %}
         <div class="col-sm">
             <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Stwórz Listę Zakupów</a>
         </div>
+        {% endif %}
         <div class="col-sm">
             <a href="{{url_for('view_login')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Logowanie</a>
         </div>
         <div class="col-sm">
-            <a href="{{url_for('view_registraton')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Rejestracja</a>
+            <a href="{{url_for('view_registraton')}}" class="btn btn-primary btn-lg active" role="button"
+               aria-pressed="true">Rejestracja</a>
         </div>
     </div>
 </div>

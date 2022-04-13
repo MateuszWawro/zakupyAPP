@@ -18,13 +18,15 @@
                     id
                 </th>
                 <th>
-                    product
+                    Produkt
                 </th>
                 <th>
-                    producer
+                    Producent
+                <th>
+                   Cena
                 </th>
                 <th>
-                    prycza
+                    akcja
                 </th>
             </tr>
             </thead>
@@ -35,6 +37,7 @@
                 <td>{{i.product}}</td>
                 <td>{{i.producer}}</td>
                 <td>{{i.price}} zł</td>
+                <td><a href ="/delete/{{i.id}}" class="btn btn-danger btn-lg active  offset-lg-4 mt-1" role="button" aria-pressed="true"> Delete </a></td>
             </tr>
             {% endfor %}
             </tbody>

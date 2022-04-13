@@ -98,3 +98,12 @@ def load_user(user_id):
 def view_logout():
     logout_user()
     return redirect(url_for('home_page'))
+
+
+##kasowanie rekordów
+@app.route("/delete/<int:id>", methods=["POST","GET"])
+def view_delete(id):
+    product_list = DbModel.query.filter_by(id=id).first()
+    db.session.delete(product_list)
+    db.session.commit()
+    return redirect(url_for('view_product_list'))
